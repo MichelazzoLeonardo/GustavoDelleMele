@@ -5,7 +5,8 @@ $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
 $recipe = array(
     'name' => $_POST['name'],
     'ingredients' => $_POST['ingredients'],
-    'preparation' => $_POST['preparation']
+    'preparation' => $_POST['preparation'],
+    'owner' => $_COOKIE['user']
 );
 
 $exists = false;

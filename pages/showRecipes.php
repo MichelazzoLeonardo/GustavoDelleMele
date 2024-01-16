@@ -14,6 +14,7 @@
         foreach ($JSON_DATA as $recipe) {
             echo "
         <h3>" . $recipe['name'] . "</h3>
+        <h5>by ".$recipe['owner']."</h5>
         <p>" . $recipe['ingredients'] . "</p>
         <p>" . $recipe['preparation'] . "</p>
         ";
