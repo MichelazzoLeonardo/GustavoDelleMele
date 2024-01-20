@@ -18,7 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     if ($check) {
         setcookie('user', $user['username'], time() + 86400, '/');
-        header('Location:showRecipes.php');
+        if (isset($_COOKIE['page']))
+            $page = $_COOKIE['page'];
+        else $page = 'showRecipes.php';
+        setcookie('page', null, time() + 86400, '/');
+        header('Location:'.$page);
     }
     else {
         echo "

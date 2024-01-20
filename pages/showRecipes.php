@@ -4,6 +4,12 @@
     <meta charset="UTF-16">
     <title>Recipes</title>
     <link href="../style/style.css" type="text/css" rel="stylesheet">
+    <?php
+    if(!isset($_COOKIE['user'])) {
+        setcookie('page', 'showRecipes.php', time() + 86400, '/');
+        header('Location:login.php');
+    }
+    ?>
 </head>
 <body>
     <?php
@@ -23,11 +29,14 @@
         echo "NESSUNA RICETTA INSERITA AL MOMENTO<br><br>";
     }
     ?>
-<form action="newRecipe.php" method="post">
-    <input type="submit" value="+">
-</form><br><br>
-<form action="login.php" method="post">
-    <input type="submit" value="<<<">
-</form>
+    <form action="newRecipe.php" method="post">
+        <input type="submit" value="+">
+    </form><br>
+    <form action="logout.php" method="post">
+        <input type="submit" value="LOGOUT">
+    </form><br><br>
+    <form action="login.php" method="post">
+        <input type="submit" value="<<<">
+    </form>
 </body>
 </html>

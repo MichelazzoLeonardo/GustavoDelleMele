@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-16">
     <title>Add Recipe</title>
+    <?php
+    if(!isset($_COOKIE['user'])) {
+        setcookie('page', 'newRecipe.php', time() + 86400, '/');
+        header('Location:login.php');
+    }
+    ?>
 </head>
-<body><?php
-if(isset($_COOKIE['user']))
+<body>
+<?php
+if($_COOKIE['user'] != 'guest')
     echo"
     <form action='addRecipe.php' method='post'>
         <input type='text' name='name' placeholder='Nome della ricetta' required autofocus><br>
@@ -17,7 +24,7 @@ if(isset($_COOKIE['user']))
         <input type='submit' value='<<<'>
     </form>";
 else
-    echo "non sei registrato<br>
+    echo "utente non riconosciuto<br>
     <form action='showRecipes.php' method='post'>
         <input type='submit' value='<<<'>
     </form>

@@ -1,2 +1,2 @@
 <?php
-header('Location:pages/showRecipes.php');
+header('Location:pages/login.php');
