@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-16">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../style/style-login.css">
 </head>
 <body>
-<form action="checkLogin.php" method="post">
-    <input type="text" name="username" placeholder="username/email" required autofocus><br>
-    <input type="password" name="pw" placeholder="password" required><br>
-    <input type="submit" value="LOGIN">
-</form>
-<form action="guest.php" method="post">
-    <input type="hidden" name="guest" value="true">
-    <input type="submit" value="Accedi come ospite">
-</form>
-<a href="register.php">Registrati</a>
+<div class="container">
+    <form action="checkLogin.php" method="post">
+        <input class="input" type="text" name="username" placeholder="username/email" required autofocus><br>
+        <input class="input" type="password" name="pw" placeholder="password" required><br>
+        <input class="button" type="submit" value="LOGIN">
+    </form>
+    <form action="guest.php" method="post">
+        <input class="button" type="submit" value="Accedi come ospite">
+    </form>
+<a class="ref" href="register.php">Registrati</a>
+</div>
 </body>
 </html>

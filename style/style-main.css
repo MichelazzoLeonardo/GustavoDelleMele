@@ -1,0 +1,35 @@
+body {
+    font-family: "Yu Gothic Medium",sans-serif;
+}
+.text {
+    font-size: xx-large;
+}
+.container {
+    background-color: rgba(0, 0, 0, .2);
+    height: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .5%;
+    border-radius: 20px;
+    text-align: left;
+    padding-left: 5%;
+    padding-top: .1%;
+    padding-bottom: 1%;
+}
+.title {
+    color: black;
+    font-size: xxx-large;
+    margin-bottom: -3%;
+}
+.subtitle {
+    color: black;
+    font-size: x-large;
+}
+.sub-div {
+    float: left;
+}
+.norm {
+    margin-left: 30%;
+    margin-bottom: 8%;
+}

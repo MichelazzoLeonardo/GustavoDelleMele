@@ -1,0 +1,51 @@
+html {
+    background-image: linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 1)) , url("../img/Iginio_Massari.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+body {
+     font-family: "Yu Gothic Medium",sans-serif;
+}
+.container {
+    background-color: rgba(0, 0, 0, .4);
+    height: 100%;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.input {
+    background-color: rgba(0, 0, 0, .5);
+    color: lightgray;
+    text-align: center;
+    margin-bottom: 3%;
+    font-size: x-large;
+    border-radius: 10px;
+}
+.button {
+    background-color: rgba(0, 0, 0, 1);
+    color: lightgray;
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: xx-large;
+    border-radius: 5px;
+}
+.ref {
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    padding: 1%;
+    text-align: center;
+    font-size: x-large;
+    color: lightgray;
+}
+.text {
+    color: white;
+    font-size: xx-large;
+}

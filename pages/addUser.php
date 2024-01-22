@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-16">
+    <title>Registration Failed</title>
+    <link rel="stylesheet" type="text/css" href="../style/style-login.css">
+</head>
+<body>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $FILE_PATH = '../data/users.json';
@@ -22,9 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         header('Location:login.php');
     }
     else {
-        echo "
-            USERNAME O EMAIL GIA' REGISTRATO<br>
-            <a href='register.php'>Registrati</a>
+        echo "<div class='container'>
+            <p class='text'>USERNAME O EMAIL GIA' REGISTRATO</p>
+            <a class='ref' href='register.php'>Registrati</a>
+            </div>
         ";
     }
 }
+?>
+</body>
+</html>
