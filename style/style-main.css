@@ -33,3 +33,13 @@ body {
     margin-left: 30%;
     margin-bottom: 8%;
 }
+.div-buttons {
+    text-align: right;
+}
+.div-button {
+    font-size: xx-large;
+    margin-right: 5%;
+}
+.edit {
+    margin-bottom: 2%;
+}
