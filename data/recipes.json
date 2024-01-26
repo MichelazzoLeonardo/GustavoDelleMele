@@ -10,5 +10,11 @@
         "ingredients": "Pasta e sugo",
         "preparation": "Prendi la pasta e metti il sugo",
         "owner": "leonardo"
+    },
+    {
+        "name": "Pasta al pesto",
+        "ingredients": "Pasta, pesto",
+        "preparation": "Fai la pasta, aggiungi il pesto",
+        "owner": "leonardo"
     }
 ]

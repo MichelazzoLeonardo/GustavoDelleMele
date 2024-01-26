@@ -9,12 +9,22 @@
         setcookie('page', 'showRecipes.php', time() + 86400, '/');
         header('Location:login.php');
     }
-    function remove() {
-
-    }
     ?>
 </head>
 <body>
+<div class="header">
+    <a class='header-button' href='showRecipes.php'>HOME</a>
+    <?php
+    if ($_COOKIE['user'] != 'guest') {
+        echo "<a class='header-button' href='userRecipes.php'>" . $_COOKIE['user'] . "</a>";
+        echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
+    }
+    if ($_COOKIE['user'] == 'guest')
+        echo "<a class='header-button' href='login.php'>LOGIN</a>";
+    ?>
+
+</div>
+
 <div class="parent-container">
 
         <?php
