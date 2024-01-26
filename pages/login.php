@@ -9,12 +9,12 @@
 <div class="container">
     <form action="checkLogin.php" method="post">
         <input class="input" type="text" name="username" placeholder="username/email" required autofocus><br>
-        <input class="input" type="password" name="pw" placeholder="password" required><br>
+        <input class="input" type="password" name="pw" placeholder="password" required><br><br>
         <input class="button" type="submit" value="LOGIN">
     </form>
     <form action="guest.php" method="post">
         <input class="button" type="submit" value="Accedi come ospite">
-    </form>
+    </form><br>
 <a class="ref" href="register.php">Registrati</a>
 </div>
 </body>

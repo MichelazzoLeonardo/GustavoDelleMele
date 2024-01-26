@@ -1,5 +1,5 @@
 <?php
-$FILE_PATH = '../data/recipes.json';
+$FILE_PATH = '../data/farms.json';
 $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
 
 if (isset($_POST['edit'])) {
@@ -11,7 +11,7 @@ if (isset($_POST['edit'])) {
             break;
         }
     file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
-    header('Location:showRecipes.php');
+    header('Location:community.php');
 }
 else {
 
@@ -32,10 +32,10 @@ else {
     if (!$exists) {
         $JSON_DATA[] = $recipe;
         file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
-        header('Location:newRecipe.php');
+        header('Location:newFarm.php');
     } else {
         echo "UNA RICETTA CON QUESTO NOME ESISTE GIA'<br>
-    <form action='newRecipe.php' method='post'>
+    <form action='newFarm.php' method='post'>
         <input type='submit' value='<<<'>
     </form>";
     }

@@ -6,17 +6,17 @@
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
-        setcookie('page', 'showRecipes.php', time() + 86400, '/');
+        setcookie('page', 'community.php', time() + 86400, '/');
         header('Location:login.php');
     }
     ?>
 </head>
 <body>
 <div class="header">
-    <a class='header-button' href='showRecipes.php'>HOME</a>
+    <a class='header-button' href='community.php'>HOME</a>
     <?php
     if ($_COOKIE['user'] != 'guest') {
-        echo "<a class='header-button' href='userRecipes.php'>" . $_COOKIE['user'] . "</a>";
+        echo "<a class='header-button' href='myFarms.php'>" . $_COOKIE['user'] . "</a>";
         echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
     }
     if ($_COOKIE['user'] == 'guest')
@@ -28,7 +28,7 @@
 <div class="parent-container">
 
         <?php
-        $FILE_PATH = '../data/recipes.json';
+        $FILE_PATH = '../data/farms.json';
         $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
 
         if (isset($_POST['remove']))
@@ -52,12 +52,12 @@
         if ($_COOKIE['user'] == $recipe['owner'])
             echo "
             <div class='div-buttons'>
-            <form action='newRecipe.php' method='post'>
-                <input type='hidden' name='edit' value='".$recipe['name']."'>
+            <form action='newFarm.php' method='post'>
+                <input type='hidden' name='edit' value='" .$recipe['name']. "'>
                 <input type='submit' class='div-button edit' value='✏️'>
             </form>
-            <form action='showRecipes.php' method='post'>
-                <input type='hidden' name='remove' value='".$recipe['name']."'>
+            <form action='community.php' method='post'>
+                <input type='hidden' name='remove' value='" .$recipe['name']."'>
                 <input type='submit' class='div-button remove' value='🗑️'>
             </form>
             </div>";
@@ -67,29 +67,9 @@
         ";
             }
         } else {
-            echo "<p class='text'>NESSUNA RICETTA INSERITA AL MOMENTO</p>";
+            echo "<h1 class='title'>Wow, such empty</h1>";
         }
         ?>
 </div>
 </body>
 </html>
-<!--
-{
-        "name": "Spaghetti",
-        "ingredients": "pasta",
-        "preparation": "\u00e8 easy dai",
-        "owner": "polo"
-    },
-    {
-        "name": "Pasta al sugo",
-        "ingredients": "Pasta e sugo",
-        "preparation": "Prendi la pasta e metti il sugo",
-        "owner": "leonardo"
-    },
-    {
-        "name": "Pasta al pesto",
-        "ingredients": "Pasta, pesto",
-        "preparation": "Fai la pasta, aggiungi il pesto",
-        "owner": "leonardo"
-    }
--->

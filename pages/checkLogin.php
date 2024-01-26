@@ -28,7 +28,7 @@
             setcookie('user', $user['username'], time() + 86400, '/');
             if (isset($_COOKIE['page']))
                 $page = $_COOKIE['page'];
-            else $page = 'showRecipes.php';
+            else $page = 'community.php';
             setcookie('page', null, time() + 86400, '/');
             header('Location:'.$page);
         }

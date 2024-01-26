@@ -6,14 +6,14 @@
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
-        setcookie('page', 'showRecipes.php', time() + 86400, '/');
+        setcookie('page', 'community.php', time() + 86400, '/');
         header('Location:login.php');
     }
     ?>
 </head>
 <body>
 <div class="header">
-    <a class='header-button' href='showRecipes.php'>HOME</a>
+    <a class='header-button' href='community.php'>HOME</a>
     <?php
     if ($_COOKIE['user'] != 'guest') {
         echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
@@ -24,10 +24,10 @@
 
 <div class="parent-container">
 
-    <h1 class="title">Le tue ricette</h1><br>
+    <h1 class="title">Le tue farm</h1><br>
 
     <?php
-    $FILE_PATH = '../data/recipes.json';
+    $FILE_PATH = '../data/farms.json';
     $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
 
     if (isset($_POST['remove']))
@@ -51,11 +51,11 @@
                 <p class='text'><b>Preparazione:</b><br>" . $recipe['preparation'] . "</p>";
                 echo "
                 <div class='div-buttons'>
-                <form action='newRecipe.php' method='post'>
+                <form action='newFarm.php' method='post'>
                     <input type='hidden' name='edit' value='" . $recipe['name'] . "'>
                     <input type='submit' class='div-button edit' value='✏️'>
                 </form>
-                <form action='showRecipes.php' method='post'>
+                <form action='community.php' method='post'>
                     <input type='hidden' name='remove' value='" . $recipe['name'] . "'>
                     <input type='submit' class='div-button remove' value='🗑️'>
                 </form>
@@ -66,9 +66,10 @@
             }
         }
     } else {
-        echo "<p class='text'>NESSUNA RICETTA INSERITA AL MOMENTO</p>";
+        echo "<p class='text'>Non hai ancora condiviso nessuno dei tuoi capolavori</p><br>";
     }
     ?>
+    <a class='button' href='newFarm.php'>+</a>
 </div>
 </body>
 </html>
