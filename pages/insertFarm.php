@@ -1,42 +1,89 @@
-<?php
-$FILE_PATH = '../data/farms.json';
-$JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
-
-if (isset($_POST['edit'])) {
-    foreach ($JSON_DATA as &$item)
-        if ($item['name'] == $_POST['edit']) {
-            $item['name'] = $_POST['name'];
-            $item['ingredients'] = $_POST['ingredients'];
-            $item['preparation'] = $_POST['preparation'];
-            break;
-        }
-    file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
-    header('Location:community.php');
-}
-else {
-
-    $recipe = array(
-        'name' => $_POST['name'],
-        'ingredients' => $_POST['ingredients'],
-        'preparation' => $_POST['preparation'],
-        'owner' => $_COOKIE['user']
-    );
-
-    $exists = false;
-    foreach ($JSON_DATA as $item)
-        if ($item['name'] == $recipe['name']) {
-            $exists = true;
-            break;
-        }
-
-    if (!$exists) {
-        $JSON_DATA[] = $recipe;
-        file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
-        header('Location:newFarm.php');
-    } else {
-        echo "UNA RICETTA CON QUESTO NOME ESISTE GIA'<br>
-    <form action='newFarm.php' method='post'>
-        <input type='submit' value='<<<'>
-    </form>";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-16">
+    <title>Add Recipe</title>
+    <link rel="stylesheet" type="text/css" href="../style/style-main.css">
+    <?php
+    if(!isset($_COOKIE['user'])) {
+        setcookie('page', 'newFarm.php', time() + 86400, '/');
+        header('Location:login.php');
     }
-}
+    ?>
+</head>
+<body>
+<div class="header">
+    <a class='header-button' href='community.php'>HOME</a>
+    <?php
+    if ($_COOKIE['user'] != 'guest') {
+        echo "<a class='header-button' href='myFarms.php'>" . $_COOKIE['user'] . "</a>";
+        echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
+    }
+    if ($_COOKIE['user'] == 'guest')
+        echo "<a class='header-button' href='login.php'>LOGIN</a>";
+    ?>
+</div>
+    <?php
+    $FILE_PATH = '../data/farms.json';
+    $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
+
+    if (isset($_POST['edit'])) {
+        foreach ($JSON_DATA as &$item)
+            if ($item['name'] == $_POST['edit']) {
+                $item['name'] = $_POST['name'];
+                $item['version'] = $_POST['version'];
+                $item['production'] = $_POST['production'];
+                $item['rates'] = $_POST['rates'];
+                $item['type'] = $_POST['type'];
+                $item['overworld'] = $_POST['overworld'];
+                $item['nether'] = $_POST['nether'];
+                $item['end'] = $_POST['end'];
+                $item['owner'] = $_COOKIE['user'];
+                break;
+            }
+        file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
+        header('Location:community.php');
+    }
+    else {
+        if (isset($_POST['overworld']))
+            $overworld = $_POST['overworld'];
+        else
+            $overworld = null;
+        if (isset($_POST['nether']))
+            $nether = $_POST['nether'];
+        else
+            $nether = null;
+        if (isset($_POST['end']))
+            $end = $_POST['end'];
+        else
+            $end = null;
+
+        $recipe = array(
+            'name' => $_POST['name'],
+            'version' => $_POST['version'],
+            'production' => $_POST['production'],
+            'rates' => $_POST['rates'],
+            'type' => $_POST['type'],
+            'overworld' => $overworld,
+            'nether' => $nether,
+            'end' => $end,
+            'owner' => $_COOKIE['user']
+        );
+
+        $exists = false;
+        foreach ($JSON_DATA as $item)
+            if ($item['name'] == $recipe['name']
+            && $item['owner'] == $recipe['owner']) {
+                $exists = true;
+                break;
+            }
+
+        if (!$exists) {
+            $JSON_DATA[] = $recipe;
+            file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
+            header('Location:newFarm.php');
+        } else {
+            echo "<h1 class='title'>UNA FARM CON QUESTO NOME ESISTE GIA'</h1><br>";
+        }
+    }
+    ?>

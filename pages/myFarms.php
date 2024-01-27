@@ -69,7 +69,10 @@
         echo "<p class='text'>Non hai ancora condiviso nessuno dei tuoi capolavori</p><br>";
     }
     ?>
-    <a class='button' href='newFarm.php'>+</a>
+    <div class="parent-container">
+        <a class='button' href='newFarm.php'>+</a>
+    </div>
+
 </div>
 </body>
 </html>

@@ -1,1 +1,13 @@
-null
+[
+    {
+        "name": "shulker farm",
+        "version": "",
+        "production": "n",
+        "rates": "nn",
+        "type": "mob",
+        "overworld": "overworld",
+        "nether": null,
+        "end": null,
+        "owner": "mickey"
+    }
+]
