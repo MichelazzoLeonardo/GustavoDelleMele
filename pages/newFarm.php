@@ -40,49 +40,73 @@
                         $farm = $r;
                         break;
                     }
-                echo "
-                
-                <form action='insertFarm.php' method='post'>
-                    <input type='hidden' name='edit' value='".$_POST['edit']."'>
-                    <input class='input' type='text' name='name' value='" . $r['name'] . "' required autofocus><br>
-                    <input class='input' type='text' name='version' value='" . $r['version'] . "'><br>
-                    <textarea class='input' cols='30' rows='5' name='production' required>" . $r['production'] . "</textarea><br>
-                    <textarea class='input' cols='30' rows='5' name='rates' required>" . $r['rates'] . "</textarea><br>
-                    <label class='label'><b>Tipo di farm:</b><br>
-                        Mob<input type='radio' name='type' value='mob' required "; if ($r['type'] == 'mob') echo "checked"; echo">&nbsp;
-                        Block<input type='radio' name='type' value='block' required "; if ($r['type'] == 'block') echo "checked"; echo">&nbsp;
-                        Item<input type='radio' name='type' value='item' required "; if ($r['type'] == 'item') echo "checked"; echo"><br>
-                    </label>
-                    <label class='label'><b>Dimensione:</b><br>
-                        Overworld<input type='checkbox' name='overworld' value='overworld' "; if ($r['overworld'] == 'overworld') echo "checked"; echo">&nbsp;
-                        Nether<input type='checkbox' name='nether' value='nether' "; if ($r['nether'] == 'nether') echo "checked"; echo">&nbsp;
-                        End<input type='checkbox' name='end' value='end' "; if ($r['end'] == 'end') echo "checked"; echo"><br>
-                    </label>
-                    <input class='button' type='submit' value='OK'>
-                </form>
-            ";
+
+                $required = '';
+                $name = $farm['name'];
+                $version = $farm['version'];
+                $production = $farm['production'];
+                $rates = $farm['rates'];
+
+                if ($farm['type'] == 'mob')
+                    $mob = 'checked';
+                else $mob = '';
+
+                if ($farm['type'] == 'block')
+                    $block = 'checked';
+                else $block = '';
+
+                if ($farm['type'] == 'item')
+                    $item = 'checked';
+                else $item = '';
+
+                if ($farm['overworld'] == 'overworld')
+                    $overworld = 'checked';
+                else $overworld = '';
+
+                if ($farm['nether'] == 'nether')
+                    $nether = 'checked';
+                else $nether = '';
+
+                if ($farm['end'] == 'end')
+                    $end = 'checked';
+                else $end = '';
+
             } else {
-                echo "
-                <form action='insertFarm.php' method='post'>
-                    <input class='input' type='text' name='name' placeholder='Nome della farm' required autofocus><br>
-                    <input class='input' type='text' name='version' placeholder='versione'><br>
-                    <textarea class='input' cols='30' rows='5' name='production' placeholder='item prodotti' required></textarea><br>
-                    <textarea class='input' cols='30' rows='5' name='rates' placeholder='item/h' required></textarea><br>
-                    <label class='label'><b>Tipo di farm:</b><br>
-                        Mob<input type='radio' name='type' value='mob' required>&nbsp;
-                        Block<input type='radio' name='type' value='block' required>&nbsp;
-                        Item<input type='radio' name='type' value='item' required><br>
-                    </label>
-                    <label class='label'><b>Dimensione:</b><br>
-                        Overworld<input type='checkbox' name='overworld' value='overworld' checked>&nbsp;
-                        Nether<input type='checkbox' name='nether' value='nether'>&nbsp;
-                        End<input type='checkbox' name='end' value='end'><br>
-                    </label>
-                    <input class='button' type='submit' value='OK'>
-                </form>
-            ";
+                $required = 'required';
+                $name = 'Nome della farm';
+                $version = 'Versione';
+                $production = 'Item prodotti';
+                $rates = 'Numero di item/h';
+                $mob = 'checked';
+                $block = '';
+                $item = '';
+                $overworld = 'checked';
+                $nether = '';
+                $end = '';
             }
         }
         ?>
+
+
+<form action='insertFarm.php' method='post'>
+    <input class='input' type='text' name='name' placeholder='<?php echo $name.'\' '.$required?>' autofocus><br>
+    <input class='input' type='text' name='version' placeholder='<?php echo $version.'\' '.$required ?>'><br>
+    <textarea class='input' cols='30' rows='5' name='production' placeholder='<?php echo $production.'\' '.$required ?>'></textarea><br>
+    <textarea class='input' cols='30' rows='5' name='rates' placeholder='<?php echo $rates.'\' '.$required ?>'></textarea><br>
+    <label class='label'><b>Tipo di farm:</b><br>
+        Mob<input type='radio' name='type' value='mob' <?php echo $mob.' '.$required ?>>&nbsp;
+        Block<input type='radio' name='type' value='block' <?php echo $block.' '.$required ?>>&nbsp;
+        Item<input type='radio' name='type' value='item' <?php echo $item.' '.$required ?>><br>
+    </label>
+    <label class='label'><b>Dimensione:</b><br>
+        <img class='icon' src='../img/overworld.png' alt='overworld.png'>
+        <input type='checkbox' name='overworld' value='overworld' <?php echo $overworld ?>>&nbsp;
+        <img class='icon' src='../img/nether.gif' alt='nether.png'>
+        <input type='checkbox' name='nether' value='nether' <?php echo $nether ?>>&nbsp;
+        <img class='icon' src='../img/end.png' alt='end.png'>
+        <input type='checkbox' name='end' value='end' <?php echo $end ?>><br>
+    </label>
+    <input class='button' type='submit' value='OK'>
+</form>
 </body>
 </html>

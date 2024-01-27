@@ -1,13 +1,13 @@
 [
     {
         "name": "shulker farm",
-        "version": "",
-        "production": "n",
-        "rates": "nn",
+        "version": "1.20+",
+        "production": "shulker shells",
+        "rates": "1200\/h",
         "type": "mob",
         "overworld": "overworld",
         "nether": null,
-        "end": null,
+        "end": "end",
         "owner": "mickey"
     }
 ]

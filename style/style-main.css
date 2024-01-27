@@ -86,3 +86,10 @@ body {
     border: #002679 solid 2px;
     font-weight: bold;
 }
+.icon {
+    height: 50px;
+    border-radius: 10px;
+}
+.icon:checked {
+    border: solid 4px darkcyan;
+}
