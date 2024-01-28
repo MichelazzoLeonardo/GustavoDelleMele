@@ -99,11 +99,11 @@
         Item<input type='radio' name='type' value='item' <?php echo $item.' '.$required ?>><br>
     </label>
     <label class='label'><b>Dimensione:</b><br>
-        <img class='icon' src='../img/overworld.png' alt='overworld.png'>
+        <img class='icon' src='../img/icon/overworld.png' alt='overworld.png'>
         <input type='checkbox' name='overworld' value='overworld' <?php echo $overworld ?>>&nbsp;
-        <img class='icon' src='../img/nether.gif' alt='nether.png'>
+        <img class='icon' src='../img/icon/nether.gif' alt='nether.png'>
         <input type='checkbox' name='nether' value='nether' <?php echo $nether ?>>&nbsp;
-        <img class='icon' src='../img/end.png' alt='end.png'>
+        <img class='icon' src='../img/icon/end.png' alt='end.png'>
         <input type='checkbox' name='end' value='end' <?php echo $end ?>><br>
     </label>
     <input class='button' type='submit' value='OK'>
