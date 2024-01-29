@@ -27,19 +27,11 @@
     </div>
 </div>
 <div class="parent-container">
-
-    <h1 class="title">Le tue farm</h1>
-    <br><br><br>
+    <h1 class="title" style="padding-top: 5%;">Le tue farm</h1>
+    <br><br>
 
     <?php
     $FILE_PATH = '../data/farms.json';
-    $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
-
-    if (isset($_POST['remove']))
-        foreach ($JSON_DATA as &$farm)
-            if ($farm['name'] == $_POST['remove'])
-                unset($JSON_DATA[array_search($farm, $JSON_DATA)]);
-    file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
     $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
 
     if (!empty($JSON_DATA)) {
@@ -51,8 +43,18 @@
                 <div class='internal-div'>
                     <div class='sub-div'>
                         <p class='text'><b>Versione:</b> ".$farm['version']."</p>
-                        <p class='text'><b>Produzione:</b> ".$farm['rates']."</p>
-                        <a class='text' href='".$farm['tutorial']."' target='_blank'>Tutorial</a>
+                        <p class='text'><b>Produzione:</b><br>".$farm['rates']."</p>
+                        <a class='ref' style='font-size: x-large' href='".$farm['tutorial']."' target='_blank'>Tutorial</a>
+                    <form action='removeFarm.php' method='post' style='float: right'>
+                        <input type='hidden' name='remove-name' value='" . $farm['name'] . "'>
+                        <input type='hidden' name='remove-owner' value='" . $farm['owner'] . "'>
+                        <input class='ref' type='submit' value='remove'>
+                    </form>
+                    <form action='newFarm.php' method='post' style='float: right'>
+                        <input type='hidden' name='edit-name' value='" . $farm['name'] . "'>
+                        <input type='hidden' name='edit-owner' value='" . $farm['owner'] . "'>
+                        <input class='ref' type='submit' value='edit'>
+                    </form>
                     </div>
                 </div>
                 </div>
@@ -67,7 +69,7 @@
     <div class="parent-container">
         <a class='ref' href='newFarm.php' style="padding: 0 .8% .5% .8%">+</a>
     </div>
-
+    <br><br><br>
 </div>
 </body>
 </html>

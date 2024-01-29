@@ -14,15 +14,9 @@
 <body>
 <div class="parent-header">
     <div class="header">
-        <a class='header-button' href='community.php'>HOME</a>
-        <?php
-        if ($_COOKIE['user'] != 'guest') {
-            echo "<a class='header-button' href='myFarms.php'>" . $_COOKIE['user'] . "</a>";
-            echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
-        }
-        if ($_COOKIE['user'] == 'guest')
-            echo "<a class='header-button' href='login.php'>LOGIN</a>";
-        ?>
+        <div class="div-logo">
+            <img class="logo" src="../img/background/logo-minecraft.svg" alt="logo-minecraft.svg">
+        </div>
     </div>
 </div>
     <?php
@@ -34,17 +28,16 @@
             if ($item['name'] == $_POST['edit']) {
                 $item['name'] = $_POST['name'];
                 $item['version'] = $_POST['version'];
-                $item['rates'] = $_POST['rates'];
+                $item['rates'] = str_replace("\r\n", "<br>", $_POST['rates']);
                 $item['type'] = $_POST['type'];
                 $item['overworld'] = $_POST['overworld'];
                 $item['nether'] = $_POST['nether'];
                 $item['end'] = $_POST['end'];
                 $item['tutorial'] = $_POST['tutorial'];
-                $item['owner'] = $_COOKIE['user'];
                 break;
             }
         file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
-        header('Location:community.php');
+        header('Location:myFarms.php');
     }
     else {
         if (isset($_POST['overworld']))
@@ -60,10 +53,13 @@
         else
             $end = null;
 
+        $rates = $_POST['rates'];
+        $rates = str_replace("\r\n", "<br>", $rates);
+
         $recipe = array(
             'name' => $_POST['name'],
             'version' => $_POST['version'],
-            'rates' => $_POST['rates'],
+            'rates' => $rates,
             'type' => $_POST['type'],
             'overworld' => $overworld,
             'nether' => $nether,
@@ -83,9 +79,14 @@
         if (!$exists) {
             $JSON_DATA[] = $recipe;
             file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
-            header('Location:newFarm.php');
+            header('Location:myFarms.php');
         } else {
-            echo "<h1 class='title'>HAI GIA' CREATO UNA FARM CON QUESTO NOME</h1><br>";
+            echo "<h1 class='title' style='padding-top: 5%;'>HAI GIA' CREATO UNA FARM CON QUESTO NOME</h1>
+            <br><br><br><br><br><br>
+            <div class='parent-container'>
+                <a class='ref' href='newFarm.php'>New Farm</a>
+            </div>
+            ";
         }
     }
     ?>
