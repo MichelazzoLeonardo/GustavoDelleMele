@@ -1,35 +1,65 @@
+@font-face {
+    font-family: Minecraft;
+    src: url("../font/MinecraftSeven.woff");
+}
+@font-face {
+    font-family: NotoSans;
+    src: url("../font/NotoSans-Regular.woff2");
+}
+html {
+    background-image:url("../img/background/birch_forest.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
 body {
-    font-family: "Yu Gothic Medium",sans-serif;
+    font-family: Minecraft, serif;
 }
 .text {
-    font-size: xx-large;
+    color: black;
+    font-size: x-large;
+    text-align: left;
 }
 .parent-container {
     text-align: center;
 }
-.sub-div {
-    float: left;
-}
 .container {
-    background-color: rgba(0, 0, 0, .2);
+    background-color: #d0c5c0;
     height: 100%;
-    width: 90%;
+    width: 35%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: .5%;
-    border-radius: 20px;
-    text-align: left;
-    padding-left: 5%;
-    padding-top: .1%;
-    padding-bottom: 1%;
+    margin-top: 3%;
+    text-align: center;
+}
+.internal-div {
+    background-color: #a69e9a;
+    padding-top: .4%;
+}
+.sub-div {
+    background-color: white;
+    padding: 4%;
+}
+
+.div-logo {
+    text-align: center;
+    margin-bottom: -3%;
+}
+.logo {
+    width: 17%;
+}
+
+.parent-header {
+    background-color: #171615;
+    padding: 1% 1% 1%;
+    margin: -1% -1% -1% ;
 }
 .header {
-    background-color: #262626;
-    width: 102%;
-    margin-left: -.55%;
-    margin-top: -.6%;
+    background-color: #171615;
     text-align: left;
-    padding: 2%;
+    padding: 1%;
 }
 
 
@@ -51,31 +81,70 @@ body {
 .header-button {
     text-decoration: none;
     color: white;
-    border-style: none;
-    font-size: large;
-    padding: 1%;
+    border: solid transparent 1px;
+    font-family: NotoSans, serif;
+    font-size: small;
+    font-weight: bold;
+    padding: .75%;
     margin-right: 1%;
 }
 .header-button:hover {
-    color: white;
-    background-color: #2A631CFF;
+    color: #bfff63;
 }
 .title {
+    font-family: inherit;
     color: black;
+    text-shadow: 3px 0 rgba(255, 255, 255, .8),
+                -3px 0 rgba(255, 255, 255, .8),
+                0 3px rgba(255, 255, 255, .8),
+                0 -3px rgba(255, 255, 255, .8);
     font-size: xxx-large;
     margin-bottom: -3%;
     text-align: center;
 }
+.name {
+    color: #151515;
+    font-size: xxx-large;
+    font-weight: bold;
+    margin-bottom: 3%;
+    padding-top: 2%;
+}
 .subtitle {
-    color: black;
-    font-size: x-large;
+    font-size: xx-large;
+    font-family: Minecraft, serif;
+    font-weight: bold;
+    text-shadow: 3px 0 rgba(255, 255, 255, .7),
+    -3px 0 rgba(255, 255, 255, .7),
+    0 3px rgba(255, 255, 255, .7),
+    0 -3px rgba(255, 255, 255, .7);
+    text-align: center;
 }
 .label {
     font-size: large;
 }
-.norm {
-    margin-left: 30%;
-    margin-bottom: 8%;
+.input, textarea.input {
+    background-color: #eae6e5;
+    font-family: NotoSans, serif;
+    font-size: x-large;
+    text-align: center;
+    padding: 1%;
+    margin-bottom: 2%;
+    border: solid #afa09b 2px;
+}
+.input:focus, textarea.input:focus {
+    background-color: #dcd3cf;
+}
+.input-title {
+    font-family: Minecraft, serif;
+    font-size: xx-large;
+    text-align: center;
+    padding: 1%;
+    margin-bottom: 2%;
+    background-color: transparent;
+    border: none;
+}
+.input-title:focus {
+    outline: none;
 }
 .div-buttons {
     text-align: right;
@@ -88,19 +157,31 @@ body {
     margin-bottom: 2%;
 }
 .button {
-    text-decoration: none;
-    background-color: #002679;
+    font-family: Minecraft, serif;
+    font-size: xxx-large;
     color: white;
-    border: transparent;
-    border-radius: 100px;
-    font-size: large;
-    padding: 1% 1.3% 1% 1.3%;
+    background-color: #3c8527;
+    text-shadow:0 4px 0 #2a631c;
+    box-shadow:inset 0 6px #52a535,inset 0 -6px #2a641c;
+    padding: 0 5% 2% 5%;
+    border: solid black;
 }
 .button:hover {
-    color: #002679;
-    background-color: white;
-    border: #002679 solid 2px;
-    font-weight: bold;
+    background-color: #367723;
+}
+.ref {
+    font-family: Minecraft, serif;
+    font-size: xx-large;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    background-color: #d0c5c0;
+    box-shadow:inset 0 6px #ede5e2,inset 0 -6px #aba09c;
+    padding: 0 .5% .5% .5%;
+    border: solid ;
+}
+.ref:hover {
+    background-color: #d9d1cd;
 }
 .icon {
     height: 50px;

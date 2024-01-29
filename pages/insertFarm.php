@@ -12,16 +12,18 @@
     ?>
 </head>
 <body>
-<div class="header">
-    <a class='header-button' href='community.php'>HOME</a>
-    <?php
-    if ($_COOKIE['user'] != 'guest') {
-        echo "<a class='header-button' href='myFarms.php'>" . $_COOKIE['user'] . "</a>";
-        echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
-    }
-    if ($_COOKIE['user'] == 'guest')
-        echo "<a class='header-button' href='login.php'>LOGIN</a>";
-    ?>
+<div class="parent-header">
+    <div class="header">
+        <a class='header-button' href='community.php'>HOME</a>
+        <?php
+        if ($_COOKIE['user'] != 'guest') {
+            echo "<a class='header-button' href='myFarms.php'>" . $_COOKIE['user'] . "</a>";
+            echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
+        }
+        if ($_COOKIE['user'] == 'guest')
+            echo "<a class='header-button' href='login.php'>LOGIN</a>";
+        ?>
+    </div>
 </div>
     <?php
     $FILE_PATH = '../data/farms.json';
@@ -32,12 +34,12 @@
             if ($item['name'] == $_POST['edit']) {
                 $item['name'] = $_POST['name'];
                 $item['version'] = $_POST['version'];
-                $item['production'] = $_POST['production'];
                 $item['rates'] = $_POST['rates'];
                 $item['type'] = $_POST['type'];
                 $item['overworld'] = $_POST['overworld'];
                 $item['nether'] = $_POST['nether'];
                 $item['end'] = $_POST['end'];
+                $item['tutorial'] = $_POST['tutorial'];
                 $item['owner'] = $_COOKIE['user'];
                 break;
             }
@@ -61,12 +63,12 @@
         $recipe = array(
             'name' => $_POST['name'],
             'version' => $_POST['version'],
-            'production' => $_POST['production'],
             'rates' => $_POST['rates'],
             'type' => $_POST['type'],
             'overworld' => $overworld,
             'nether' => $nether,
             'end' => $end,
+            'tutorial' => $_POST['tutorial'],
             'owner' => $_COOKIE['user']
         );
 
@@ -83,7 +85,7 @@
             file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
             header('Location:newFarm.php');
         } else {
-            echo "<h1 class='title'>UNA FARM CON QUESTO NOME ESISTE GIA'</h1><br>";
+            echo "<h1 class='title'>HAI GIA' CREATO UNA FARM CON QUESTO NOME</h1><br>";
         }
     }
     ?>

@@ -6,6 +6,13 @@
     <link rel="stylesheet" type="text/css" href="../style/style-login.css">
 </head>
 <body>
+<div class="parent-header">
+    <div class="header">
+        <div class="div-logo">
+            <img class="logo" src="../img/background/logo-minecraft.svg" alt="logo-minecraft.svg">
+        </div>
+    </div>
+</div>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $FILE_PATH = '../data/users.json';
@@ -31,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     else {
         echo "<div class='container'>
-            <p class='text'>USERNAME O EMAIL GIA' REGISTRATO</p>
+            <p class='title'>USERNAME O EMAIL GIA' REGISTRATO</p>
             <a class='ref' href='register.php'>Registrati</a>
             </div>
         ";

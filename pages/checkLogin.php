@@ -6,6 +6,13 @@
     <link rel="stylesheet" type="text/css" href="../style/style-login.css">
 </head>
 <body>
+<div class="parent-header">
+    <div class="header">
+        <div class="div-logo">
+            <img class="logo" src="../img/background/logo-minecraft.svg" alt="logo-minecraft.svg">
+        </div>
+    </div>
+</div>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $FILE_PATH = '../data/users.json';
@@ -33,8 +40,8 @@
             header('Location:'.$page);
         }
         else {
-            echo "<div class='container'>
-                <p class='text'>CREDENZIALI ERRATE</p>
+            echo "<div class='container' style='width: 45%'>
+                <p class='title' style='padding: 0'>CREDENZIALI ERRATE</p>
                 <a class='ref' href='login.php'>Login</a>
                 </div>
             ";
