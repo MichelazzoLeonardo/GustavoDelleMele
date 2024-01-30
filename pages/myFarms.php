@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-16">
-    <title>Recipes</title>
+    <title>Le tue Farm</title>
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
@@ -31,36 +31,43 @@
     <br><br>
 
     <?php
-    $FILE_PATH = '../data/farms.json';
-    $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
+    require 'classes/DB.php';
 
-    if (!empty($JSON_DATA)) {
-        foreach ($JSON_DATA as $farm) {
-            if ($farm['owner'] == $_COOKIE['user']) {
-                echo "
-                <div class='container'>
-                <p class='name' style='font-weight: bold; font-size: xx-large'>" . $farm['name'] . "</p>
+    $conn = DB::getConnection();
+
+    $owner = $_COOKIE['user'];
+    $query = "SELECT name, version, rates, tutorial FROM farm WHERE owner = '$owner';";
+    $farms = $conn->query($query);
+
+    if ($farms->num_rows > 0) {
+        while($row = $farms->fetch_assoc()) {
+            if ($row['tutorial'] != "")
+                $tutorial = "<a class='ref' style='font-size: x-large' href='" . $row['tutorial'] . "' target='_blank'>Tutorial</a>";
+            else $tutorial = "";
+
+            echo "
+            <div class='container'>
+            <p class='name' style='font-weight: bold; font-size: xx-large'>" . $row['name'] . "</p>
                 <div class='internal-div'>
                     <div class='sub-div'>
-                        <p class='text'><b>Versione:</b> ".$farm['version']."</p>
-                        <p class='text'><b>Produzione:</b><br>".$farm['rates']."</p>
-                        <a class='ref' style='font-size: x-large' href='".$farm['tutorial']."' target='_blank'>Tutorial</a>
-                    <form action='removeFarm.php' method='post' style='float: right'>
-                        <input type='hidden' name='remove-name' value='" . $farm['name'] . "'>
-                        <input type='hidden' name='remove-owner' value='" . $farm['owner'] . "'>
-                        <input class='ref' type='submit' value='remove'>
-                    </form>
-                    <form action='newFarm.php' method='post' style='float: right'>
-                        <input type='hidden' name='edit-name' value='" . $farm['name'] . "'>
-                        <input type='hidden' name='edit-owner' value='" . $farm['owner'] . "'>
-                        <input class='ref' type='submit' value='edit'>
-                    </form>
+                        <p class='text'><b>Versione:</b> " . $row['version'] . "</p>
+                        <p class='text'><b>Produzione:</b><br>" . $row['rates'] . "</p>
+                        " . $tutorial . "
+                        <form action='removeFarm.php' method='post' style='float: right'>
+                            <input type='hidden' name='remove-name' value='" . $row['name'] . "'>
+                            <input type='hidden' name='remove-owner' value='" . $owner . "'>
+                            <input class='ref' type='submit' value='remove'>
+                        </form>
+                        <form action='newFarm.php' method='post' style='float: right'>
+                            <input type='hidden' name='edit-name' value='" . $row['name'] . "'>
+                            <input type='hidden' name='edit-owner' value='" . $owner . "'>
+                            <input class='ref' type='submit' value='edit'>
+                        </form>
                     </div>
                 </div>
-                </div>
-                <br><br>
-                ";
-            }
+            </div>
+            <br><br>
+            ";
         }
     } else {
         echo "<p class='subtitle'>Non hai ancora condiviso nessuno dei tuoi capolavori</p><br>";

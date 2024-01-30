@@ -18,7 +18,7 @@
     <div class="internal-div">
         <div class="sub-div">
             <form action="checkLogin.php" method="post">
-                <input class="input" type="text" name="username" placeholder="username/email" required autofocus><br>
+                <input class="input" type="text" name="username" placeholder="username" required autofocus><br>
                 <input class="input" type="password" name="pw" placeholder="password" required><br><br>
                 <input class="button" type="submit" value="LOGIN">
             </form>

@@ -58,6 +58,7 @@ header {
 }
 .input {
     background-color: #eae6e5;
+    width: 85%;
     font-family: NotoSans, serif;
     font-size: x-large;
     text-align: center;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-16">
-    <title>Add Recipe</title>
+    <title>Add Farm</title>
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
@@ -38,45 +38,46 @@
         }
         else {
             if (isset($_POST['edit-name']) && isset($_POST['edit-owner'])) {
+                require 'classes/DB.php';
+                $name = $_POST['edit-name'];
+                $owner = $_POST['edit-owner'];
 
-                $farms = json_decode(file_get_contents("../data/farms.json"), true);
-                $farm = null;
-                foreach ($farms as $f)
-                    if ($f['name'] == $_POST['edit-name'] && $f['owner'] == $_POST['edit-owner']) {
-                        $farm = $f;
-                        break;
-                    }
+                $conn = DB::getConnection();
+
+                $query = "SELECT * FROM farm WHERE owner = '$owner' AND name = '$name';";
+                $farm = $conn->query($query);
+                $row = $farm->fetch_assoc();
 
                 $required = '';
-                $name = 'value=\''.$farm['name'].'\'';
-                $version = 'value=\''.$farm['version'].'\'';
-                $rates = '>'.str_replace("<br>", "\r\n", $farm['rates']);
+                $name = 'value=\''.$row['name'].'\'';
+                $version = 'value=\''.$row['version'].'\'';
+                $rates = '>'.str_replace("<br>", "\r\n", $row['rates']);
 
-                if ($farm['type'] == 'mob')
+                if ($row['type'] == 'mob')
                     $mob = 'checked';
                 else $mob = '';
 
-                if ($farm['type'] == 'block')
+                if ($row['type'] == 'block')
                     $block = 'checked';
                 else $block = '';
 
-                if ($farm['type'] == 'item')
+                if ($row['type'] == 'item')
                     $item = 'checked';
                 else $item = '';
 
-                if ($farm['overworld'] == 'overworld')
+                if ($row['overworld'] == 'overworld')
                     $overworld = 'checked';
                 else $overworld = '';
 
-                if ($farm['nether'] == 'nether')
+                if ($row['nether'] == 'nether')
                     $nether = 'checked';
                 else $nether = '';
 
-                if ($farm['end'] == 'end')
+                if ($row['end'] == 'end')
                     $end = 'checked';
                 else $end = '';
 
-                $tutorial = 'value=\''.$farm['tutorial'].'\'';
+                $tutorial = 'value=\''.$row['tutorial'].'\'';
 
             } else {
                 $required = 'required';
@@ -111,8 +112,9 @@
                 <textarea class='input' cols='30' rows='3' name='rates' <?php echo $rates ?></textarea><br>
                 <label class='label'><b>Tipo di farm:</b><br>
                     Mob<input type='radio' name='type' value='mob' <?php echo $mob.' '.$required ?>>&nbsp;
-                    Block<input type='radio' name='type' value='block' <?php echo $block.' '.$required ?>>&nbsp;
-                    Item<input type='radio' name='type' value='item' <?php echo $item.' '.$required ?>><br>
+                    Block<input type='radio' name='type' value='block' <?php echo $block.' '.$required ?>><br>
+                    Automatica<input type='radio' name='afkable' value='automatic' <?php echo $mob.' '.$required ?>>
+                    Manuale<input type='radio' name='afkable' value='manual' <?php echo $block.' '.$required ?>><br>
                 </label>
                 <label class='label'><b>Dimensione:</b><br>
                     <img class='icon' src='../img/icon/overworld.png' alt='overworld.png'>

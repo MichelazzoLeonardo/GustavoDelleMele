@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-16">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" type="text/css" href="../style/style-login.css">
 </head>
 <body>

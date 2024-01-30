@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-16">
-    <title>Recipes</title>
+    <title>Home</title>
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
@@ -37,19 +37,27 @@
     <br><br>
 
     <?php
-    $FILE_PATH = '../data/farms.json';
-    $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
+    require 'classes/DB.php';
 
-    if (!empty($JSON_DATA)) {
-        foreach ($JSON_DATA as $farm) {
+    $conn = DB::getConnection();
+
+    $query = "SELECT name, version, rates, tutorial FROM farm;";
+    $farms = $conn->query($query);
+
+    if ($farms->num_rows > 0) {
+        while($row = $farms->fetch_assoc()) {
+            if ($row['tutorial'] != "")
+                $tutorial = "<a class='ref' style='font-size: x-large' href='".$row['tutorial']."' target='_blank'>Tutorial</a>";
+            else $tutorial = '';
+
             echo "
             <div class='container'>
-            <p class='name' style='font-weight: bold; font-size: xx-large'>" . $farm['name'] . "</p>
+            <p class='name' style='font-weight: bold; font-size: xx-large'>" . $row['name'] . "</p>
             <div class='internal-div'>
                 <div class='sub-div'>
-                    <p class='text'><b>Versione:</b> ".$farm['version']."</p>
-                    <p class='text'><b>Produzione:</b><br>".$farm['rates']."</p>
-                    <a class='ref' style='font-size: x-large' href='".$farm['tutorial']."' target='_blank'>Tutorial</a>
+                    <p class='text'><b>Versione:</b> " . $row['version'] . "</p>
+                    <p class='text'><b>Produzione:</b><br>" . $row['rates'] . "</p>
+                    " . $tutorial . "
                 </div>
             </div>
             </div>

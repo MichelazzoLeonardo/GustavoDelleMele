@@ -15,24 +15,18 @@
 </div>
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $FILE_PATH = '../data/users.json';
-        $USERS = json_decode(file_get_contents($FILE_PATH), true);
-        $user = array(
-            'username' => $_POST['username'],
-            'password' => $_POST['pw']
-        );
-        $check = false;
-        if (!empty($USERS)) {
-            foreach ($USERS as $USER) {
-                if (($USER['username'] == $user['username'] || $USER['email'] == $user['username'])
-                    && $USER['password'] == $user['password']) {
-                    $check = true;
-                    break;
-                }
-            }
-        }
-        if ($check) {
-            setcookie('user', $user['username'], time() + 86400, '/');
+        require 'classes/DB.php';
+
+        $conn = DB::getConnection();
+
+        $username = $_POST['username'];
+        $password = $_POST['pw'];
+
+        $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password';";
+        $user = $conn->query($query);
+
+        if ($user->num_rows > 0) {
+            setcookie('user', $username, time() + 86400, '/');
             if (isset($_COOKIE['page']))
                 $page = $_COOKIE['page'];
             else $page = 'community.php';
