@@ -99,8 +99,10 @@
 <div class="container">
     <form action='insertFarm.php' method='post'>
         <?php
-        if (isset($_POST['edit-name']) && isset($_POST['edit-owner']))
-            echo "<input type='hidden' name='edit' value='".$_POST['edit-name']."'>";
+        if (isset($_POST['edit-name']) && isset($_POST['edit-owner'])) {
+            echo "<input type='hidden' name='edit-name' value='" . $_POST['edit-name'] . "'>";
+            echo "<input type='hidden' name='edit-owner' value='" . $_POST['edit-owner'] . "'>";
+        }
         ?>
     <input class='input-title' type='text' name='name' <?php echo $name.' '.$required?>>
     <div class="internal-div">

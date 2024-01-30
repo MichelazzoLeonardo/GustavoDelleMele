@@ -20,19 +20,29 @@
     </div>
 </div>
     <?php
+    require 'Farm.php';
+
     $FILE_PATH = '../data/farms.json';
     $JSON_DATA = json_decode(file_get_contents($FILE_PATH), true);
 
-    if (isset($_POST['edit'])) {
+    if (isset($_POST['edit-name']) && isset($_POST['edit-owner'])) {
+        $object = new Farm(
+            $_POST['name'],
+            $_POST['version'],
+            str_replace("\r\n", "<br>", $_POST['rates']),
+            $_POST['type'],
+            $_POST['overworld'],
+            $_POST['nether'],
+            $_POST['end']
+        );
         foreach ($JSON_DATA as &$item)
-            if ($item['name'] == $_POST['edit']) {
-                $item['name'] = $_POST['name'];
-                $item['version'] = $_POST['version'];
-                $item['rates'] = str_replace("\r\n", "<br>", $_POST['rates']);
-                $item['type'] = $_POST['type'];
-                $item['overworld'] = $_POST['overworld'];
-                $item['nether'] = $_POST['nether'];
-                $item['end'] = $_POST['end'];
+            if ($item['name'] == $_POST['edit-name'] && $item['owner'] == $_POST['edit-owner']) {
+                $item['version'] = $object->getName();
+                $item['rates'] = $object->getRates();
+                $item['type'] = $object->getType();
+                $item['overworld'] = $object->getOverworld();
+                $item['nether'] = $object->getNether();
+                $item['end'] = $object->getEnd();
                 $item['tutorial'] = $_POST['tutorial'];
                 break;
             }
@@ -56,28 +66,37 @@
         $rates = $_POST['rates'];
         $rates = str_replace("\r\n", "<br>", $rates);
 
-        $recipe = array(
-            'name' => $_POST['name'],
-            'version' => $_POST['version'],
-            'rates' => $rates,
-            'type' => $_POST['type'],
-            'overworld' => $overworld,
-            'nether' => $nether,
-            'end' => $end,
+        $object = new Farm(
+            $_POST['name'],
+            $_POST['version'],
+            $rates,
+            $_POST['type'],
+            $overworld,
+            $nether,
+            $end
+        );
+        $farm = array(
+            'name' => $object->getName(),
+            'version' => $object->getVersion(),
+            'rates' => $object->getRates(),
+            'type' => $object->getType(),
+            'overworld' => $object->getOverworld(),
+            'nether' => $object->getNether(),
+            'end' => $object->getEnd(),
             'tutorial' => $_POST['tutorial'],
             'owner' => $_COOKIE['user']
         );
 
         $exists = false;
         foreach ($JSON_DATA as $item)
-            if ($item['name'] == $recipe['name']
-            && $item['owner'] == $recipe['owner']) {
+            if ($item['name'] == $farm['name']
+            && $item['owner'] == $_POST['owner']) {
                 $exists = true;
                 break;
             }
 
         if (!$exists) {
-            $JSON_DATA[] = $recipe;
+            $JSON_DATA[] = $farm;
             file_put_contents($FILE_PATH, json_encode($JSON_DATA, JSON_PRETTY_PRINT));
             header('Location:myFarms.php');
         } else {
