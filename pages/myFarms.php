@@ -56,12 +56,12 @@
                         <form action='removeFarm.php' method='post' style='float: right'>
                             <input type='hidden' name='remove-name' value='" . $row['name'] . "'>
                             <input type='hidden' name='remove-owner' value='" . $owner . "'>
-                            <input class='ref' type='submit' value='remove'>
+                            <input class='farm-button remove' type='submit' value='R'>
                         </form>
                         <form action='newFarm.php' method='post' style='float: right'>
                             <input type='hidden' name='edit-name' value='" . $row['name'] . "'>
                             <input type='hidden' name='edit-owner' value='" . $owner . "'>
-                            <input class='ref' type='submit' value='edit'>
+                            <input class='farm-button edit' type='submit' value='E'>
                         </form>
                     </div>
                 </div>
