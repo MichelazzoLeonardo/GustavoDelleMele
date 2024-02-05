@@ -49,7 +49,7 @@
                 $row = $farm->fetch_assoc();
 
                 $required = '';
-                $name = 'value=\''.$row['name'].'\'';
+                $name = 'value=\''.$row['name'].'\' readonly';
                 $version = 'value=\''.$row['version'].'\'';
                 $rates = '>'.str_replace("<br>", "\r\n", $row['rates']);
 

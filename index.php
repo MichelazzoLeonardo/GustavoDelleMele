@@ -9,5 +9,4 @@ USER:
 FARM:
 ||  owner   ||  name    ||  version ||  rates   ||  type    ||  afkable ||  overworld   ||  nether  ||  end ||  tutorial    ||
 
-
 */

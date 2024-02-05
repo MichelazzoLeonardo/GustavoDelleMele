@@ -80,6 +80,52 @@ body {
 .logo {
     width: 17%;
 }
+.parent-div-search {
+    margin-top: -1.3%;
+    margin-left: 2%;
+}
+.div-search {
+    text-align: center;
+    border: solid white 1px;
+    width: 30%;
+    border-radius: 5px;
+    padding: .3%;
+}
+.search-bar {
+    background-color: transparent;
+    border: transparent;
+    border-radius: 5px;
+    color: white;
+    padding: .4%;
+    width: 90%;
+}
+.search-bar:focus {
+    outline: none;
+}
+.search-bar::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-image: url("../img/icon/X.png");
+    color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    width: 30px;
+    height: 30px;
+}
+.search-button {
+    background-image: url("../img/icon/search.png");
+    background-color: transparent;
+    border: transparent;
+    border-radius: 5px;
+    padding: .3%;
+    color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    width: 5%;
+}
 
 
 

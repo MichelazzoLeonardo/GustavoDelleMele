@@ -24,6 +24,14 @@
             echo "<a class='header-button' href='logout.php'>LOGOUT</a>";
         }
         ?>
+        <div class="parent-div-search">
+            <div class="div-search">
+                <form action="community.php" method="post">
+                    <input class="search-bar" type="search" name="search" placeholder="search a farm">
+                    <input class="search-button" type="submit" value="__">
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <div class="parent-container">

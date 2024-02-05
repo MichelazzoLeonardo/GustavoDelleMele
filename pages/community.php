@@ -29,20 +29,14 @@
                 echo "<a class='header-button' href='login.php'>LOGIN</a>";
             ?>
         </div>
-        <!---
-        <div class="filters">
-            <select name="type-filter" class="drop_down type-filter">
-                <option value="0">FARM TYPE</option>
-                <option class="drop-down-option" value="block">block</option>
-                <option class="drop-down-option" value="mob">mob</option>
-            </select>
-            <select name="afk-filter" class="drop_down afk-filter">
-                <option value="*">AFK TYPE</option>
-                <option class="drop-down-option" value="automatic">automatic</option>
-                <option class="drop-down-option" value="manual">manual</option>
-            </select>
+        <div class="parent-div-search">
+            <div class="div-search">
+                <form action="community.php" method="post">
+                    <input class="search-bar" type="search" name="search" placeholder="search a farm">
+                    <input class="search-button" type="submit" value="__">
+                </form>
+            </div>
         </div>
-        --->
     </div>
 </div>
 

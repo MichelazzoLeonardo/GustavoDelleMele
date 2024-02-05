@@ -27,6 +27,7 @@
 
         if ($user->num_rows > 0) {
             setcookie('user', $username, time() + 86400, '/');
+            setcookie('search', null, time() + 86400, '/');
             if (isset($_COOKIE['page']))
                 $page = $_COOKIE['page'];
             else $page = 'community.php';
