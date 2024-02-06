@@ -105,10 +105,10 @@
             echo "<input type='hidden' name='edit-owner' value='" . $_POST['edit-owner'] . "'>";
         }
         ?>
-    <input class='input-title' type='text' name='name' <?php echo $name.' '.$required?>>
+    <input class='input-title' type='text' name='name' <?php echo $name.' '.$required?> aria-valuemax="64">
     <div class="internal-div">
         <div class="sub-div">
-                <input class='input' type='text' name='version' <?php echo $version.'\' '.$required ?>'><br>
+                <input class='input' type='text' name='version' <?php echo $version.'\' '.$required ?> aria-valuemax="64"><br>
                 <textarea class='input' cols='30' rows='3' name='rates' <?php echo $rates ?></textarea><br>
                 <label class='label'><b>Tipo di farm:</b><br>
                     Mob<input type='radio' name='type' value='mob' <?php echo $mob.' '.$required ?>>&nbsp;
@@ -124,7 +124,7 @@
                     <img class='icon' src='../img/icon/end.png' alt='end.png'>
                     <input type='checkbox' name='end' value='end' <?php echo $end ?>><br>
                 </label>
-                <input class='input' type='url' name='tutorial' style='font-size: medium; width: 100%' <?php echo $tutorial ?>'>
+                <input class='input' type='url' name='tutorial' style='font-size: medium; width: 100%' <?php echo $tutorial ?>  aria-valuemax="200">
                 <br>
                 <input class='ref' type='submit' value='✓' style="padding: 0 2% 0 2%">
         </div>

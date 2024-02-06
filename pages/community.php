@@ -34,6 +34,7 @@
                 <form action="community.php" method="post">
                     <input class="search-bar" type="search" name="search" placeholder="search a farm">
                     <input class="search-button" type="submit" value="__">
+                    <input class="filter" type="submit" value="A-Z">
                 </form>
             </div>
         </div>
@@ -49,17 +50,22 @@
     require 'classes/DB.php';
 
     $conn = DB::getConnection();
+    $orderby = $_COOKIE['orderby'];
 
-    $query = "SELECT name, version, rates, tutorial FROM farm;";
-    $farms = $conn->query($query);
+    if (isset($_POST['search'])) {
+        $searched = $_POST['search'];
+        $query = "SELECT DISTINCT name, version, rates, tutorial FROM farm
+                    WHERE name LIKE '%$searched%'
+                    ORDER BY name $orderby;";
+        $farms = $conn->query($query);
 
-    if ($farms->num_rows > 0) {
-        while($row = $farms->fetch_assoc()) {
-            if ($row['tutorial'] != "")
-                $tutorial = "<a class='ref' style='font-size: x-large' href='".$row['tutorial']."' target='_blank'>Tutorial</a>";
-            else $tutorial = '';
+        if ($farms->num_rows > 0) {
+            while ($row = $farms->fetch_assoc()) {
+                if ($row['tutorial'] != "")
+                    $tutorial = "<a class='ref' style='font-size: x-large' href='" . $row['tutorial'] . "' target='_blank'>Tutorial</a>";
+                else $tutorial = '';
 
-            echo "
+                echo "
             <div class='container'>
             <p class='name' style='font-weight: bold; font-size: xx-large'>" . $row['name'] . "</p>
             <div class='internal-div'>
@@ -72,6 +78,60 @@
             </div>
             <br><br>
             ";
+            }
+        }
+
+        $query = "SELECT DISTINCT name, version, rates, tutorial FROM farm
+                    WHERE rates LIKE '%$searched%' AND name NOT LIKE '%$searched%'
+                    ORDER BY name $orderby;";
+        $farms = $conn->query($query);
+
+        if ($farms->num_rows > 0) {
+            while ($row = $farms->fetch_assoc()) {
+                if ($row['tutorial'] != "")
+                    $tutorial = "<a class='ref' style='font-size: x-large' href='" . $row['tutorial'] . "' target='_blank'>Tutorial</a>";
+                else $tutorial = '';
+
+                echo "
+            <div class='container'>
+            <p class='name' style='font-weight: bold; font-size: xx-large'>" . $row['name'] . "</p>
+            <div class='internal-div'>
+                <div class='sub-div'>
+                    <p class='text'><b>Versione:</b> " . $row['version'] . "</p>
+                    <p class='text'><b>Produzione:</b><br>" . $row['rates'] . "</p>
+                    " . $tutorial . "
+                </div>
+            </div>
+            </div>
+            <br><br>
+            ";
+            }
+        }
+    }
+    elseif (!isset($_POST['search'])) {
+        $query = "SELECT name, version, rates, tutorial FROM farm ORDER BY name $orderby;";
+        $farms = $conn->query($query);
+
+        if ($farms->num_rows > 0) {
+            while ($row = $farms->fetch_assoc()) {
+                if ($row['tutorial'] != "")
+                    $tutorial = "<a class='ref' style='font-size: x-large' href='" . $row['tutorial'] . "' target='_blank'>Tutorial</a>";
+                else $tutorial = '';
+
+                echo "
+            <div class='container'>
+            <p class='name' style='font-weight: bold; font-size: xx-large'>" . $row['name'] . "</p>
+            <div class='internal-div'>
+                <div class='sub-div'>
+                    <p class='text'><b>Versione:</b> " . $row['version'] . "</p>
+                    <p class='text'><b>Produzione:</b><br>" . $row['rates'] . "</p>
+                    " . $tutorial . "
+                </div>
+            </div>
+            </div>
+            <br><br>
+            ";
+            }
         }
     } else {
         echo "<h3 class='title'>Wow, such empty</h3>";

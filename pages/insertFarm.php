@@ -41,7 +41,6 @@
         $tutorial = $_POST['tutorial'];
 
         $query = "UPDATE farm SET
-                    name = '$object->name',
                     version = '$object->version',
                     rates = '$object->rates',
                     type = '$object->type',

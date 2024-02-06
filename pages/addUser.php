@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = $_POST['pw'];
+    $password = password_hash($_POST['pw'], PASSWORD_DEFAULT);
 
     $query = "SELECT * FROM user WHERE username = '$username';";
     $users = $conn->query($query);

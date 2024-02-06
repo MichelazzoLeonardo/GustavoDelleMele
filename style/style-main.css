@@ -34,23 +34,6 @@ body {
     background-color: #171615;
     text-align: right;
 }
-.filters {
-    text-align: left;
-    margin-left: 2%;
-}
-.drop_down {
-    width: auto;
-    color: white;
-    background-color: #171615;
-    border: solid transparent 1px;
-    font-family: NotoSans, serif;
-    font-size: small;
-    font-weight: bold;
-    margin-left: 3%;
-}
-.drop_down:focus {
-    outline: none;
-}
 
 .parent-container {
     text-align: center;
@@ -97,7 +80,7 @@ body {
     border-radius: 5px;
     color: white;
     padding: .4%;
-    width: 90%;
+    width: 80%;
 }
 .search-bar:focus {
     outline: none;
@@ -125,6 +108,15 @@ body {
     background-size: cover;
     background-attachment: scroll;
     width: 5%;
+}
+.filter {
+    background-color: transparent;
+    border: solid white 1px;
+    border-radius: 5px;
+    color: white;
+    width: 10%;
+    padding: 2%;
+    margin: -1% -4% -1% 1%;
 }
 
 

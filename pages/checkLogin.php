@@ -22,12 +22,13 @@
         $username = $_POST['username'];
         $password = $_POST['pw'];
 
-        $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password';";
+        $query = "SELECT * FROM user WHERE username = '$username';";
         $user = $conn->query($query);
+        $row = $user->fetch_assoc();
 
-        if ($user->num_rows > 0) {
-            setcookie('user', $username, time() + 86400, '/');
-            setcookie('search', null, time() + 86400, '/');
+        if ($user->num_rows > 0 && password_verify($password, $row['password'])) {
+            setcookie('user', $username, time() + 86400 * 7, '/');
+            setcookie('orderby', 'ASC', time() + 86400 * 7, '/');
             if (isset($_COOKIE['page']))
                 $page = $_COOKIE['page'];
             else $page = 'community.php';
