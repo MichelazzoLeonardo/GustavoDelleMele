@@ -110,13 +110,18 @@ body {
     width: 5%;
 }
 .filter {
+    background-image: url("../img/icon/filter.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
     background-color: transparent;
     border: solid white 1px;
     border-radius: 5px;
-    color: white;
-    width: 10%;
+    color: transparent;
+    width: 9%;
     padding: 2%;
-    margin: -1% -4% -1% 1%;
+    margin: -1% -5% -1% 1%;
 }
 
 

@@ -32,12 +32,32 @@
         <div class="parent-div-search">
             <div class="div-search">
                 <form action="community.php" method="post">
-                    <input class="search-bar" type="search" name="search" placeholder="search a farm">
-                    <input class="search-button" type="submit" value="__">
-                    <input class="filter" type="submit" value="A-Z">
+                    <input class="search-bar" type="search" name="search"
+                        <?php
+                        if (isset($_POST['search']) && $_POST['search'] != '') echo "value='".$_POST['search']."'";
+                        else echo "placeholder='search a farm'";
+                        ?>>
+                    <input class="search-button" type="submit" value="-">
+                    <input class="filter" type="submit" value="-">
                 </form>
             </div>
         </div>
+
+        <!---
+        <form style="float: left; width: 87%; text-align: right" action="community.php" method="post">
+                    <input class="search-bar" type="search" name="search"
+                        <?php /*
+        if (isset($_POST['search']) && $_POST['search'] != '') echo "value='".$_POST['search']."'";
+        else echo "placeholder='search a farm'";*/
+        ?>>
+                    <input class="search-button" type="submit" value="-">
+                </form>
+                <form action="community.php" method="post">
+                    <input type="hidden" name="filter" value="<?php //echo $_COOKIE['orderby']; ?>">
+                    <input class="filter" type="submit" value="-">
+                </form>
+        --->
+
     </div>
 </div>
 
