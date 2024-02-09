@@ -9,6 +9,11 @@
         setcookie('page', 'community.php', time() + 86400, '/');
         header('Location:login.php');
     }
+    if(isset($_POST['filter'])) {
+        if($_POST['filter'] == 'ASC')
+            $orderby = 'DESC';
+        else $orderby = 'ASC';
+    } else $orderby = $_COOKIE['orderby'];
     ?>
 </head>
 <body>
@@ -31,13 +36,20 @@
         </div>
         <div class="parent-div-search">
             <div class="div-search">
-                <form action="community.php" method="post">
+                <form style="float: left; width: 87%; text-align: left" action="community.php" method="post">
                     <input class="search-bar" type="search" name="search"
                         <?php
                         if (isset($_POST['search']) && $_POST['search'] != '') echo "value='".$_POST['search']."'";
                         else echo "placeholder='search a farm'";
                         ?>>
                     <input class="search-button" type="submit" value="-">
+                </form>
+                <form action="community.php" method="post">
+                    <input type="hidden" name="search" value="<?php
+                        if (isset($_POST['search'])) echo $_POST['search'];
+                        else echo '';
+                        ?>">
+                    <input type="hidden" name="filter" value="<?php echo $orderby ?>">
                     <input class="filter" type="submit" value="-">
                 </form>
             </div>
@@ -56,6 +68,17 @@
                     <input type="hidden" name="filter" value="<?php //echo $_COOKIE['orderby']; ?>">
                     <input class="filter" type="submit" value="-">
                 </form>
+
+
+                <form action="community.php" method="post">
+                    <input class="search-bar" type="search" name="search"
+                        <?php /*
+        if (isset($_POST['search']) && $_POST['search'] != '') echo "value='".$_POST['search']."'";
+        else echo "placeholder='search a farm'";
+        */?>>
+                    <input class="search-button" type="submit" value="-">
+                    <input class="filter" name="filter" type="submit" value="-">
+                </form>
         --->
 
     </div>
@@ -70,7 +93,6 @@
     require 'classes/DB.php';
 
     $conn = DB::getConnection();
-    $orderby = $_COOKIE['orderby'];
 
     if (isset($_POST['search'])) {
         $searched = $_POST['search'];
