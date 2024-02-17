@@ -9,6 +9,11 @@
         setcookie('page', 'community.php', time() + 86400, '/');
         header('Location:login.php');
     }
+    if(isset($_POST['filter'])) {
+        if($_POST['filter'] == 'ASC')
+            $orderby = 'DESC';
+        else $orderby = 'ASC';
+    } else $orderby = $_COOKIE['orderby'];
     ?>
 </head>
 <body>
@@ -26,9 +31,21 @@
         ?>
         <div class="parent-div-search">
             <div class="div-search">
+                <form style="float: left; width: 87%; text-align: left" action="community.php" method="post">
+                    <input class="search-bar" type="search" name="search"
+                        <?php
+                        if (isset($_POST['search']) && $_POST['search'] != '') echo "value='".$_POST['search']."'";
+                        else echo "placeholder='search a farm'";
+                        ?>>
+                    <input class="search-button" type="submit" value="-">
+                </form>
                 <form action="community.php" method="post">
-                    <input class="search-bar" type="search" name="search" placeholder="search a farm">
-                    <input class="search-button" type="submit" value="__">
+                    <input type="hidden" name="search" value="<?php
+                    if (isset($_POST['search'])) echo $_POST['search'];
+                    else echo '';
+                    ?>">
+                    <input type="hidden" name="filter" value="<?php echo $orderby ?>">
+                    <input class="filter" type="submit" value="-">
                 </form>
             </div>
         </div>
