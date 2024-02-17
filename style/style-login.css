@@ -1,0 +1,113 @@
+@font-face {
+    font-family: Minecraft;
+    src: url("../font/MinecraftSeven.woff");
+}
+@font-face {
+    font-family: NotoSans;
+    src: url("../font/NotoSans-Regular.woff2");
+}
+html {
+    background-image:url("../img/background/birch_forest.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+body {
+    font-family: Minecraft, serif;
+}
+
+.parent-header {
+    background-color: #171615;
+    padding: 1% 1% 5%;
+    margin: -1% -1% -1%;
+}
+header {
+    background-color: #171615;
+    text-align: left;
+    padding: 1%;
+}
+
+.div-logo {
+    text-align: center;
+    margin-top: 1.5%;
+    margin-bottom: -3%;
+}
+.logo {
+    width: 17%;
+}
+
+
+.container {
+    background-color: #d0c5c0;
+    height: 100%;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    text-align: center;
+}
+.internal-div {
+    background-color: #a69e9a;
+    padding-top: .4%;
+}
+.sub-div {
+    background-color: white;
+    padding: 4%;
+}
+.input {
+    background-color: #eae6e5;
+    width: 85%;
+    font-family: NotoSans, serif;
+    font-size: x-large;
+    text-align: center;
+    padding: 1%;
+    margin-bottom: 2%;
+    border: solid #afa09b;
+}
+.input:focus {
+    background-color: #dcd3cf;
+    outline: none;
+}
+.button {
+    font-family: Minecraft, serif;
+    font-size: xxx-large;
+    color: white;
+    background-color: #3c8527;
+    text-shadow:0 4px 0 #2a631c;
+    box-shadow:inset 0 6px #52a535,inset 0 -6px #2a641c;
+    padding: 0 5% 2% 5%;
+    border: solid black;
+}
+.button:hover {
+    background-color: #367723;
+}
+.refs-div {
+    text-align: center;
+    margin-top: -.7%;
+}
+.ref {
+    font-family: Minecraft, serif;
+    font-size: xx-large;
+    color: black;
+    text-decoration: none;
+    background-color: #d0c5c0;
+    box-shadow:inset 0 6px #ede5e2,inset 0 -6px #aba09c;
+    padding: 0 .3% .5% .3%;
+    border: solid black;
+}
+.ref:hover {
+    background-color: #d9d1cd;
+}
+.title {
+    color: #151515;
+    font-size: xxx-large;
+    font-weight: bold;
+    margin-bottom: 3%;
+    padding-top: 2%;
+}
+.text {
+    color: white;
+    font-size: xx-large;
+}

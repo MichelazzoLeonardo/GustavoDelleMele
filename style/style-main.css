@@ -1,0 +1,280 @@
+@font-face {
+    font-family: Minecraft;
+    src: url("../font/MinecraftSeven.woff");
+}
+@font-face {
+    font-family: NotoSans;
+    src: url("../font/NotoSans-Regular.woff2");
+}
+html {
+    background-image:url("../img/background/birch_forest.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+body {
+    font-family: Minecraft, serif;
+}
+.text {
+    color: black;
+    font-size: x-large;
+    text-align: left;
+}
+.parent-header {
+    background-color: #171615;
+    width: 100%;
+    height: 8%;
+    padding: 1% 1% 1%;
+    margin: -2.3% -1% -1%;
+    position: fixed;
+}
+.header {
+    background-color: #171615;
+    text-align: right;
+}
+
+.parent-container {
+    text-align: center;
+}
+.container {
+    background-color: #d0c5c0;
+    height: 100%;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    text-align: center;
+}
+.internal-div {
+    background-color: #a69e9a;
+    padding-top: .4%;
+}
+.sub-div {
+    background-color: white;
+    padding: 4%;
+}
+
+.div-logo {
+    text-align: center;
+    margin-bottom: -3%;
+}
+.logo {
+    width: 17%;
+}
+.parent-div-search {
+    margin-top: -1.3%;
+    margin-left: 2%;
+}
+.div-search {
+    text-align: center;
+    border: solid white 1px;
+    width: 30%;
+    border-radius: 5px;
+    padding: .3%;
+}
+.search-bar {
+    background-color: transparent;
+    border: transparent;
+    border-radius: 5px;
+    color: white;
+    padding: .4%;
+    width: 93%;
+}
+.search-bar:focus {
+    outline: none;
+}
+.search-bar::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-image: url("../img/icon/X.png");
+    color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    width: 30px;
+    height: 30px;
+}
+.search-button {
+    background-image: url("../img/icon/search.png");
+    background-color: transparent;
+    border: transparent;
+    border-radius: 5px;
+    padding: .3%;
+    color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    width: 5%;
+}
+.filter {
+    background-image: url("../img/icon/filter.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    background-color: transparent;
+    border: solid white 1px;
+    border-radius: 5px;
+    color: transparent;
+    width: 9%;
+    padding: 2%;
+    margin: -1% -5% -1% 1%;
+}
+
+
+
+.mc-button {
+    background:#3b8526;
+    box-shadow:inset 0 10px #6bc349,inset 0 -4px #2a631c,0 10px rgb(0 0 0 / 25%);
+    color:#fff;
+    text-shadow:0 1px 0 #2a631c;
+}
+.mc-button:focus,.mc-button:hover {
+    transition:all .25s,opacity .75s .5s;
+    background-image:linear-gradient(#8d8e92,#e7eaef);
+    color:#252525;
+    text-shadow:0 -1px 0 #e7eaef;
+    box-shadow:inset 0 -2px #e7eaef,inset 0 2px #8d8e92;
+}
+
+
+.header-button {
+    text-decoration: none;
+    color: white;
+    border: solid transparent 1px;
+    font-family: NotoSans, serif;
+    font-size: small;
+    font-weight: bold;
+    padding: .75%;
+    margin-right: 1%;
+}
+.header-button:hover {
+    color: #bfff63;
+}
+.title {
+    font-family: inherit;
+    color: black;
+    text-shadow: 3px 0 rgba(255, 255, 255, .8),
+                -3px 0 rgba(255, 255, 255, .8),
+                0 3px rgba(255, 255, 255, .8),
+                0 -3px rgba(255, 255, 255, .8);
+    font-size: xxx-large;
+    margin-bottom: -3%;
+    text-align: center;
+}
+.name {
+    color: #151515;
+    font-size: xxx-large;
+    font-weight: bold;
+    margin-bottom: 3%;
+    padding-top: 2%;
+}
+.subtitle {
+    font-size: xx-large;
+    font-family: Minecraft, serif;
+    font-weight: bold;
+    text-shadow: 3px 0 rgba(255, 255, 255, .7),
+    -3px 0 rgba(255, 255, 255, .7),
+    0 3px rgba(255, 255, 255, .7),
+    0 -3px rgba(255, 255, 255, .7);
+    text-align: center;
+}
+.label {
+    font-size: large;
+}
+.input, textarea.input {
+    background-color: #eae6e5;
+    font-family: NotoSans, serif;
+    font-size: x-large;
+    text-align: center;
+    padding: 1%;
+    margin-bottom: 2%;
+    border: solid #afa09b 2px;
+}
+.input:focus, textarea.input:focus {
+    background-color: #dcd3cf;
+}
+.input-title {
+    font-family: Minecraft, serif;
+    font-size: xx-large;
+    text-align: center;
+    padding: 1%;
+    margin-bottom: 2%;
+    background-color: transparent;
+    border: none;
+}
+.input-title:focus {
+    outline: none;
+}
+.div-buttons {
+    text-align: right;
+}
+.div-button {
+    font-size: xx-large;
+    margin-right: 5%;
+}
+.edit {
+    background-color: transparent;
+    background-image: url("../img/icon/edit.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+}
+.remove {
+    background-color: transparent;
+    background-image: url("../img/icon/remove.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+}
+.farm-button {
+    color: transparent;
+    height: 40px;
+    width: 40px;
+    background-color: #d0c5c0;
+    box-shadow:inset 0 3px #ede5e2,inset 0 -3px #aba09c;
+    border: solid black;
+}
+.farm-button:hover {
+    background-color: #d9d1cd;
+}
+
+.button {
+    font-family: Minecraft, serif;
+    font-size: xxx-large;
+    color: white;
+    background-color: #3c8527;
+    text-shadow:0 4px 0 #2a631c;
+    box-shadow:inset 0 6px #52a535,inset 0 -6px #2a641c;
+    padding: 0 5% 2% 5%;
+    border: solid black;
+}
+.button:hover {
+    background-color: #367723;
+}
+.ref {
+    font-family: Minecraft, serif;
+    font-size: xx-large;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    background-color: #d0c5c0;
+    box-shadow:inset 0 6px #ede5e2,inset 0 -6px #aba09c;
+    padding: 0 .5% .5% .5%;
+    border: solid ;
+}
+.ref:hover {
+    background-color: #d9d1cd;
+}
+.icon {
+    height: 50px;
+    border-radius: 10px;
+}
+.icon:checked {
+    border: solid 4px darkcyan;
+}
