@@ -102,8 +102,13 @@
                                 '$object->nether',
                                 '$object->end',
                                 '$tutorial');";
-            $conn->query($insert);
-            header('Location:myFarms.php');
+            try {
+                $conn->query($insert);
+            } catch (Exception $exception) {
+                header("Location:duplicateEntry.php");
+                exit();
+            }
+            header("Location:myFarms.php");
         } else {
             echo "<h1 class='title' style='padding-top: 5%;'>HAI GIA' CREATO UNA FARM CON QUESTO NOME</h1>
             <br><br><br><br><br><br>
