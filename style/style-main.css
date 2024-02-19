@@ -278,3 +278,18 @@ body {
 .icon:checked {
     border: solid 4px darkcyan;
 }
+
+.credits-container {
+    font-family: NotoSans, Serif;
+    font-size: small;
+    background-color: #171615;
+    width: 94.4%;
+    position: absolute;
+    padding: 3%;
+    margin-left: -1%;
+    color: white;
+}
+.credits-ref {
+    color: white;
+    text-decoration: none;
+}

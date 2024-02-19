@@ -180,5 +180,11 @@
     }
     ?>
 </div>
+
+<div class="credits-container">
+    <p class="credits"><b>Author: </b>Michelazzo Leonardo</p>
+    <p class="credits"><b>Email: </b><a class="credits-ref" href="mailto:webmaster@example.com">myEmail <img src="../img/icon/mailto.svg" alt="mailto.svg"></a></p>
+    <p class="credits"><b>GitHub: </b><a class="credits-ref" href="https://github.com/MichelazzoLeonardo/MinecraftFarmsCommunity" target="_blank">Project Repository <img src="../img/icon/mailto.svg" alt="mailto.svg"></a></p>
+</div>
 </body>
 </html>
