@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-16">
     <title>Qualcosa è andato storto</title>
+    <link rel="icon" href="../img/icon/iron_golem.png">
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {

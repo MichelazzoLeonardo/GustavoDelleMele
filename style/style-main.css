@@ -281,7 +281,7 @@ body {
 
 .credits-container {
     font-family: NotoSans, Serif;
-    font-size: small;
+    font-size: medium;
     background-color: #171615;
     width: 94.4%;
     position: absolute;
@@ -292,4 +292,13 @@ body {
 .credits-ref {
     color: white;
     text-decoration: none;
+}
+.credits-images {
+    text-align: center;
+}
+table {
+    text-align: left;
+}
+th {
+    color: #6bc349;
 }

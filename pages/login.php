@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-16">
     <title>Login</title>
+    <link rel="icon" href="../img/icon/creeper.png">
     <link rel="stylesheet" type="text/css" href="../style/style-login.css">
 </head>
 <body>

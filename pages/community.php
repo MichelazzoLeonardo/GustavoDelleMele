@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-16">
     <title>Home</title>
+    <link rel="icon" href="../img/icon/minecraft_java.png">
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
@@ -180,11 +181,44 @@
     }
     ?>
 </div>
-
 <div class="credits-container">
-    <p class="credits"><b>Author: </b>Michelazzo Leonardo</p>
-    <p class="credits"><b>Email: </b><a class="credits-ref" href="mailto:webmaster@example.com">myEmail <img src="../img/icon/mailto.svg" alt="mailto.svg"></a></p>
-    <p class="credits"><b>GitHub: </b><a class="credits-ref" href="https://github.com/MichelazzoLeonardo/MinecraftFarmsCommunity" target="_blank">Project Repository <img src="../img/icon/mailto.svg" alt="mailto.svg"></a></p>
+    <div class="credits-images">
+        <img style="width: 15%; padding: 2%" src="../img/logo/mojang.png" alt="mojang.png">
+        <img style="width: 20%; padding: 2% 2% 3% 2%" src="../img/logo/xbox.png" alt="xbox.png">
+        <img style="width: 40%; padding: 2% 2% 5% 2%" src="../img/icon/logo-minecraft.svg" alt="minecraft.png">
+    </div>
+    <table class="credits-table">
+        <tr>
+            <th>CONTATTI</th>
+            <th style="color: transparent">
+                _________
+            </th>
+            <th>SOCIAL</th>
+        </tr>
+        <tr>
+            <td>
+                <p class="credits"><b>Author: </b>Michelazzo Leonardo</p>
+                <p class="credits"><b>Email: </b><a class="credits-ref" href="mailto:webmaster@example.com">myEmail <img src="../img/icon/mailto.svg" alt="share.svg"></a></p>
+                <p class="credits"><b>GitHub: </b><a class="credits-ref" href="https://github.com/MichelazzoLeonardo/MinecraftFarmsCommunity" target="_blank">Project Repository <img src="../img/icon/mailto.svg" alt="share.svg"></a></p>
+            </td>
+            <td style="color: transparent">
+                _________
+            </td>
+            <td>
+                <p class="credits">
+                    <a class="credits-ref" target="_blank" href="https://www.instagram.com/minecraft/">
+                        Instgram <img src="../img/icon/mailto.svg" alt="share.svg"></a></p>
+                <p class="credits">
+                    <a class="credits-ref" target="_blank" href="https://www.reddit.com/r/Minecraft/?rdt=48290&onetap_auto=true&one_tap=true">
+                        
+                        Reddit <img src="../img/icon/mailto.svg" alt="share.svg"></a></p>
+                <p class="credits">
+                    <a class="credits-ref" target="_blank" href="https://www.youtube.com/minecraft">
+                        
+                        Youtube <img src="../img/icon/mailto.svg" alt="share.svg"></a></p>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-16">
     <title>Le tue Farm</title>
+    <link rel="icon" href="../img/icon/minecraft_java.png">
     <link rel="stylesheet" type="text/css" href="../style/style-main.css">
     <?php
     if(!isset($_COOKIE['user'])) {
